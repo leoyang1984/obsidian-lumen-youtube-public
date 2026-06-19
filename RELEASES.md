@@ -1,5 +1,33 @@
 # Releases
 
+## v0.6.0
+
+Transcript controls stay put, plus a status bar and an optional retro skin.
+
+### Fixed
+
+- **Pinned controls no longer disappear** — the mode toggle and note-capture bar
+  stay visible while the transcript scrolls during playback and when the pane is
+  resized. The view is now split into a fixed control area and a single
+  scrolling transcript, so the controls can't be dragged off the top.
+
+### Added
+
+- **Bottom status bar** — shows the current mode, follow state, playback time,
+  and line position, pinned below the transcript.
+- **Pill-style mode toggle** — original / Chinese / bilingual rendered as
+  rounded segmented buttons.
+- **Optional "Retro terminal" skin** (Settings → transcript skin) — a
+  skeuomorphic look applied to both the transcript view and the settings tab.
+  The default skin remains theme-aware and is unchanged.
+
+### Install
+
+This release supports [BRAT](https://github.com/TfTHacker/obsidian42-brat). Add
+`https://github.com/leoyang1984/obsidian-lumen-youtube-public` as a beta plugin,
+or download `main.js`, `manifest.json`, and `styles.css` from the release and
+place them in `<your-vault>/.obsidian/plugins/lumen-youtube/`.
+
 ## v0.5.0
 
 Player and note-capture polish.

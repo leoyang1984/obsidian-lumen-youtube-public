@@ -1,10 +1,22 @@
 /* Lumen YouTube — subtitle-follow view (v0.4) */
 
 .lyt-follow-root {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   padding: 0;
+  /* Positioning context for the shell; clip so the view itself never scrolls
+     (the shell fills it exactly, leaving no overflow to drag controls away). */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fills the view by its rendered box rather than a percentage-height chain,
+   giving the inner flex column a definite height regardless of how Obsidian
+   sizes .view-content. The controls stay pinned; only the list scrolls. */
+.lyt-follow-shell {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .lyt-follow-header {
@@ -25,17 +37,31 @@
 .lyt-mode-btn,
 .lyt-resume-btn {
   font-size: var(--font-ui-smaller);
-  padding: 2px 10px;
+  padding: 3px 12px;
+  border-radius: 999px;
   cursor: pointer;
+}
+
+.lyt-mode-btn {
+  background-color: var(--background-modifier-hover);
+  border: 1px solid var(--background-modifier-border);
 }
 
 .lyt-mode-btn.is-active {
   background-color: var(--interactive-accent);
+  border-color: transparent;
   color: var(--text-on-accent);
+}
+
+.lyt-resume-btn {
+  color: var(--text-muted);
 }
 
 .lyt-follow-list {
   flex: 1 1 auto;
+  /* Without min-height:0 the list refuses to shrink below its content height,
+     pushing the whole view to overflow and scroll the pinned controls away. */
+  min-height: 0;
   overflow-y: auto;
   padding: 8px 10px 40vh;
 }
@@ -129,6 +155,168 @@
 
 .lyt-follow-root.is-capturing .lyt-capture {
   border-bottom-color: var(--interactive-accent);
+}
+
+/* Pinned status bar: mode · follow state · time · line position. */
+.lyt-status {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-top: 1px solid var(--background-modifier-border);
+  background-color: var(--background-secondary);
+  font-family: var(--font-monospace);
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+}
+
+.lyt-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-green, var(--interactive-accent));
+  flex: 0 0 auto;
+}
+
+.lyt-status-dot.is-paused {
+  background-color: var(--text-faint);
+}
+
+.lyt-status-right {
+  margin-left: auto;
+}
+
+/* ---- Retro terminal skin (opt-in, settings → transcript skin) ----
+   Deliberately fixed cream/phosphor palette, not theme-derived. Only the
+   shell, controls and status carry the look heavily; transcript text is kept
+   dark for legibility (esp. the second bilingual line). */
+.lyt-follow-root[data-lyt-skin="retro"] {
+  font-family: var(--font-monospace);
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-follow-shell {
+  background-color: #ece6d6;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-follow-header,
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-capture {
+  border-bottom-color: #cfc6ad;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-mode-btn {
+  background-color: #ded6c0;
+  border: 1px solid #c3b896;
+  color: #5b5640;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-mode-btn.is-active {
+  background-color: #e0922e;
+  border-color: #b9741d;
+  color: #3a2a10;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-resume-btn {
+  background-color: #ded6c0;
+  border: 1px solid #c3b896;
+  color: #5b5640;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-capture-ts {
+  color: #7a5a1e;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-capture-input {
+  background-color: #f3eede;
+  border: 1px solid #c3b896;
+  color: #3a3526;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-follow-list {
+  background-color: #c6d2b8;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-ts {
+  color: #5a7048;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-text {
+  color: #2f3a26;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-text-cn {
+  color: #4a5a3c;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-line:hover {
+  background-color: #bccaab;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-line.is-active {
+  background-color: #dbe6c6;
+  box-shadow: inset 4px 0 0 #c47a16;
+  border-radius: 0;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-line.is-active .lyt-text {
+  color: #1c3512;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-status {
+  background-color: #ece6d6;
+  border-top-color: #cfc6ad;
+  color: #6b6450;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-status-dot {
+  background-color: #4e7d2f;
+}
+
+.lyt-follow-root[data-lyt-skin="retro"] .lyt-status-dot.is-paused {
+  background-color: #a59c80;
+}
+
+/* ---- Retro terminal skin for the settings tab ----
+   Recolors Obsidian's own controls by overriding its CSS variables within our
+   container only, so inputs/dropdowns/toggles adopt the look automatically. */
+.lyt-settings[data-lyt-skin="retro"] {
+  --background-primary: #f3eede;
+  --background-secondary: #ece6d6;
+  --background-modifier-border: #c3b896;
+  --background-modifier-border-hover: #b3a878;
+  --background-modifier-border-focus: #b9741d;
+  --interactive-normal: #ded6c0;
+  --interactive-hover: #d3c9ad;
+  --interactive-accent: #e0922e;
+  --interactive-accent-hover: #d4831f;
+  --text-on-accent: #3a2a10;
+  --text-normal: #3a3526;
+  --text-muted: #7a715a;
+  --text-accent: #a8701a;
+  font-family: var(--font-monospace);
+  background-color: #ece6d6;
+  border: 1px solid #cfc6ad;
+  border-radius: 10px;
+  padding: 4px 18px 14px;
+}
+
+.lyt-settings[data-lyt-skin="retro"] .setting-item {
+  border-top-color: #d8cfb4;
+}
+
+.lyt-settings[data-lyt-skin="retro"] .setting-item-heading .setting-item-name {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-semibold);
+  color: #b9741d;
+}
+
+.lyt-settings[data-lyt-skin="retro"]
+  .setting-item-heading
+  .setting-item-name::before {
+  content: "● ";
+  color: #4e7d2f;
 }
 
 /* YouTube player view — the iframe fills the pane and resizes with it.
