@@ -105,14 +105,14 @@
   margin-top: 2px;
 }
 
-/* Note capture bar pinned at the bottom of the follow view. */
+/* Note capture bar pinned below the header, above the transcript list. */
 .lyt-capture {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  border-top: 1px solid var(--background-modifier-border);
+  border-bottom: 1px solid var(--background-modifier-border);
 }
 
 .lyt-capture-ts {
@@ -128,5 +128,37 @@
 }
 
 .lyt-follow-root.is-capturing .lyt-capture {
-  border-top-color: var(--interactive-accent);
+  border-bottom-color: var(--interactive-accent);
+}
+
+/* YouTube player view — the iframe fills the pane and resizes with it.
+   The embedded player letterboxes the video, so any pane shape stays correct. */
+.lyt-player-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 8px;
+  gap: 8px;
+}
+
+.lyt-player-mount {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.lyt-player-mount iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.lyt-player-status {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.lyt-player-status:empty {
+  display: none;
 }

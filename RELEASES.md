@@ -1,5 +1,26 @@
 # Releases
 
+## v0.5.0
+
+Player and note-capture polish.
+
+### Changed
+
+- **Note capture moved up** — the timestamped-note input now sits directly
+  below the player header, above the transcript, so it stays visible at any
+  pane height (previously it was pinned to the bottom and could fall out of
+  view in a stacked layout).
+- **Player fills its pane** — the video now resizes with the pane on both width
+  and height instead of staying a fixed height; the embedded player letterboxes
+  so any pane shape looks right.
+
+### Install
+
+This release supports [BRAT](https://github.com/TfTHacker/obsidian42-brat). Add
+`https://github.com/leoyang1984/obsidian-lumen-youtube-public` as a beta plugin,
+or download `main.js`, `manifest.json`, and `styles.css` from the release and
+place them in `<your-vault>/.obsidian/plugins/lumen-youtube/`.
+
 ## v0.4.0
 
 In-Obsidian player with a synced transcript, plus timestamped notes.
