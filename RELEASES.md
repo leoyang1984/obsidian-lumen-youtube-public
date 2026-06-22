@@ -1,5 +1,28 @@
 # Releases
 
+## v0.7.0
+
+A "Now tray" that keeps the current line under the video — even when the
+transcript is scrolled away.
+
+### Added
+
+- **Now tray** — a frosted caption bar pinned below the player showing the
+  current line as the video plays: timestamp · original · Chinese. It is driven
+  by the follow view, so it keeps tracking playback even when you've scrolled
+  the transcript elsewhere.
+- **Replay current sentence** — a one-tap button on the tray jumps back to the
+  start of the current line and plays it again.
+- **Toggle in Settings → Now tray** — on by default; turn it off for a bare
+  player.
+
+### Install
+
+This release supports [BRAT](https://github.com/TfTHacker/obsidian42-brat). Add
+`https://github.com/leoyang1984/obsidian-lumen-youtube-public` as a beta plugin,
+or download `main.js`, `manifest.json`, and `styles.css` from the release and
+place them in `<your-vault>/.obsidian/plugins/lumen-youtube/`.
+
 ## v0.6.0
 
 Transcript controls stay put, plus a status bar and an optional retro skin.
