@@ -1,7 +1,7 @@
 {
   "id": "lumen-youtube",
   "name": "Lumen YouTube",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "minAppVersion": "1.5.0",
   "description": "Turn YouTube clippings into clean transcript Markdown (original + optional Chinese translation) for Lumen to digest. Does not summarize, download video, or transcribe audio.",
   "author": "leoyang1984",

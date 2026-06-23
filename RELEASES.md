@@ -1,5 +1,36 @@
 # Releases
 
+## v0.7.1
+
+A soft-violet frosted skin for a calmer player and synced transcript view.
+
+### Added
+
+- **Frosted soft-violet skin** (Settings → Transcript skin) — a light glassy
+  lavender look for the synced transcript, player, Now tray, and related
+  settings surface.
+
+### Changed
+
+- **Softer panels** — the frosted skin uses rounded glass surfaces with subtle
+  borders, blur, and shadows around the transcript shell and player.
+- **More comfortable transcript reading** — transcript lines are centered with a
+  wider responsive gutter and a readable max width, so long sessions feel less
+  cramped.
+- **Clearer current-line focus** — the active transcript line has a rounded
+  highlight plus the violet side accent, making it easier to keep your place
+  while listening.
+- **Matched Now tray styling** — the caption tray below the video shares the
+  same frosted visual language, including refreshed timestamp, text, and Replay
+  button colors.
+
+### Install
+
+This release supports [BRAT](https://github.com/TfTHacker/obsidian42-brat). Add
+`https://github.com/leoyang1984/obsidian-lumen-youtube-public` as a beta plugin,
+or download `main.js`, `manifest.json`, and `styles.css` from the release and
+place them in `<your-vault>/.obsidian/plugins/lumen-youtube/`.
+
 ## v0.7.0
 
 A "Now tray" that keeps the current line under the video — even when the

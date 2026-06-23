@@ -329,6 +329,153 @@
   color: #4e7d2f;
 }
 
+/* ---- Frosted soft-violet skin (opt-in, settings → transcript skin) ----
+   A light, glassy lavender palette. Translucent shell + backdrop blur reads as
+   frosted glass; transcript text stays dark slate-violet for legibility. Like
+   retro, the palette is deliberately fixed rather than theme-derived. */
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-follow-shell {
+  inset: 8px;
+  background-color: rgba(243, 240, 251, 0.78);
+  border: 1px solid rgba(214, 207, 232, 0.86);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.76),
+    0 10px 26px rgba(92, 72, 142, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-follow-header,
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-capture {
+  border-bottom-color: #d6cfe8;
+  background-color: rgba(236, 233, 247, 0.82);
+  padding-left: clamp(18px, 4vw, 42px);
+  padding-right: clamp(18px, 4vw, 42px);
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-mode-btn {
+  background-color: #e4def2;
+  border: 1px solid #cabfe6;
+  color: #5a5274;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-mode-btn.is-active {
+  background-color: #7c5cc4;
+  border-color: #6b4cb5;
+  color: #f3eefc;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-resume-btn {
+  background-color: #e4def2;
+  border: 1px solid #cabfe6;
+  color: #5a5274;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-capture-ts {
+  color: #7a6aa8;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-capture-input {
+  background-color: #f3f0fb;
+  border: 1px solid #cabfe6;
+  border-radius: 10px;
+  color: #3c3556;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-follow-list {
+  background-color: rgba(244, 242, 252, 0.6);
+  padding: 12px clamp(18px, 4vw, 42px) 40vh;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-line {
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-ts {
+  color: #8a7cc0;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-text {
+  color: #2e2a40;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-text-cn {
+  color: #4a4368;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-line:hover {
+  background-color: #ece8f8;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-line.is-active {
+  background-color: #e0d9f5;
+  border-radius: 10px;
+  box-shadow: inset 4px 0 0 #7c5cc4;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-line.is-active .lyt-text {
+  color: #241f38;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-status {
+  background-color: rgba(236, 233, 247, 0.82);
+  border-top-color: #d6cfe8;
+  color: #6b6488;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-status-dot {
+  background-color: #7c5cc4;
+}
+
+.lyt-follow-root[data-lyt-skin="frosted"] .lyt-status-dot.is-paused {
+  background-color: #a89fc4;
+}
+
+/* ---- Frosted skin for the settings tab ----
+   Same approach as retro: recolor Obsidian's own controls by overriding its CSS
+   variables within our container only. */
+.lyt-settings[data-lyt-skin="frosted"] {
+  --background-primary: #f3f0fb;
+  --background-secondary: #ece9f7;
+  --background-modifier-border: #cabfe6;
+  --background-modifier-border-hover: #b9abdd;
+  --background-modifier-border-focus: #7c5cc4;
+  --interactive-normal: #e4def2;
+  --interactive-hover: #d9d0ee;
+  --interactive-accent: #7c5cc4;
+  --interactive-accent-hover: #6b4cb5;
+  --text-on-accent: #f3eefc;
+  --text-normal: #3c3556;
+  --text-muted: #7a719c;
+  --text-accent: #6f54c0;
+  background-color: #ece9f7;
+  border: 1px solid #d6cfe8;
+  border-radius: 10px;
+  padding: 4px 18px 14px;
+}
+
+.lyt-settings[data-lyt-skin="frosted"] .setting-item {
+  border-top-color: #ddd5f0;
+}
+
+.lyt-settings[data-lyt-skin="frosted"] .setting-item-heading .setting-item-name {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-semibold);
+  color: #6f54c0;
+}
+
+.lyt-settings[data-lyt-skin="frosted"]
+  .setting-item-heading
+  .setting-item-name::before {
+  content: "❖ ";
+  color: #7c5cc4;
+}
+
 /* YouTube player view — the iframe fills the pane and resizes with it.
    The embedded player letterboxes the video, so any pane shape stays correct. */
 .lyt-player-root {
@@ -458,4 +605,59 @@
 
 .lyt-player-status:empty {
   display: none;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] {
+  padding: 10px;
+  gap: 10px;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-mount {
+  border: 1px solid rgba(214, 207, 232, 0.86);
+  border-radius: 18px;
+  background-color: #0f0d18;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.78),
+    0 10px 26px rgba(92, 72, 142, 0.12);
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-slot {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-tray {
+  max-width: none;
+  padding: 12px 16px;
+  border-color: rgba(214, 207, 232, 0.86);
+  border-radius: 16px;
+  background-color: rgba(251, 250, 255, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    0 10px 24px rgba(92, 72, 142, 0.13);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-time {
+  color: #7c5cc4;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-primary {
+  color: #241f38;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-secondary {
+  color: #5b5278;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-replay {
+  border-color: rgba(214, 207, 232, 0.95);
+  color: #5b35bf;
+  background-color: #eee8fb;
+}
+
+.lyt-player-root[data-lyt-skin="frosted"] .lyt-player-caption-replay:hover {
+  background-color: #e5dcf8;
 }
